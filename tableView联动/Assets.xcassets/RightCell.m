@@ -28,16 +28,17 @@
 
 
 - (void)setUpUI {
-    self.backgroundColor = [UIColor greenColor];
+//    self.backgroundColor = [UIColor greenColor];
     self.textLabel.textColor = [UIColor blackColor];
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 }
 
 
 - (void)setInfoModel:(Model1 *)infoModel {
     _infoModel = infoModel;
-    self.textLabel.text = self.infoModel.name;
+    self.textLabel.font = [UIFont systemFontOfSize:13];
+    self.textLabel.text = [NSString stringWithFormat:@"%@:%ld:%ld", self.infoModel.name, self.infoModel.fversion, self.infoModel.formId];
     self.textLabel.textAlignment = NSTextAlignmentLeft;
-    self.detailTextLabel.text = self.infoModel.category;
     self.detailTextLabel.textColor = [UIColor blackColor];
 }
 

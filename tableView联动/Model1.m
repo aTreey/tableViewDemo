@@ -26,33 +26,40 @@
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key { }
 
 
+// 请求网络数据
 + (void)getApplyProcedureInfoWithCategoryName:(NSString *)categoryName FinishedBlock:(finishedBlock)finishedBlock failuerBlock:(failuerBlock)failuerBlock {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"companyId"] = KCompanyId;
     parameters[@"pageNo"] = @(1);
     parameters[@"pageSize"] = @(20);
     parameters[@"category"] = categoryName;
-    [[NetWorkTools shareNetWorkTool] getWorkFlowApplyWithParameters:parameters successHandle:^(NSURLSessionDataTask *task, id responseObject) {
-        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            NSDictionary *dictArray = (NSDictionary *)responseObject;
-            NSArray *infoArray = dictArray[@"datas"];
-            
-            NSMutableArray *tempArray = [NSMutableArray array];
-            for (NSDictionary *dic in infoArray) {
-                Model1 *model1 = [self model1WithDict:dic];
-                [tempArray addObject:model1];
+    
+    
+    // 模拟延迟加载 (网络延时2s)
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[NetWorkTools shareNetWorkTool] getWorkFlowApplyWithParameters:parameters successHandle:^(NSURLSessionDataTask *task, id responseObject) {
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                NSDictionary *dictArray = (NSDictionary *)responseObject;
+                NSArray *infoArray = dictArray[@"datas"];
+                
+                NSMutableArray *tempArray = [NSMutableArray array];
+                for (NSDictionary *dic in infoArray) {
+                    Model1 *model1 = [self model1WithDict:dic];
+                    [tempArray addObject:model1];
+                }
+                
+                if (finishedBlock) {
+                    finishedBlock(tempArray.copy);
+                }
             }
-            
-            if (finishedBlock) {
-                finishedBlock(tempArray.copy);
+        } failureHandle:^(NSURLSessionDataTask *task, NSError *error) {
+            if (failuerBlock) {
+                failuerBlock(KNETWORKERROR);
             }
-        }
-    } failureHandle:^(NSURLSessionDataTask *task, NSError *error) {
-        if (failuerBlock) {
-            failuerBlock(KNETWORKERROR);
-        }
-    }];
+        }];
+    });
 }
+
 
 @end
 

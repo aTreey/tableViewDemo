@@ -61,27 +61,42 @@
     parameters[@"pageNo"] = @(1);
     parameters[@"pageSize"] = @(20);
     parameters[@"category"] = nil;
-    [[NetWorkTools shareNetWorkTool] getWorkFlowApplyWithParameters:parameters successHandle:^(NSURLSessionDataTask *task, id responseObject) {
-        
-        // 判断是否为字典
-        if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            NSDictionary *dictArray = (NSDictionary *)responseObject;
-            NSArray *categoriesArray = dictArray[@"categorys"];
+    
+    // 模拟网络加载慢时的情况 (延时2s)
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[NetWorkTools shareNetWorkTool] getWorkFlowApplyWithParameters:parameters successHandle:^(NSURLSessionDataTask *task, id responseObject) {
             
-            NSMutableArray<Model *> *tempArray = [NSMutableArray array];
-            for (NSDictionary *dict in categoriesArray) {
-                Model *model = [self modelWithDict:dict];
-                [tempArray addObject:model];
+            // 判断是否为字典
+            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+                NSDictionary *dictArray = (NSDictionary *)responseObject;
+                NSArray *categoriesArray = dictArray[@"categorys"];
+                
+                NSMutableArray<Model *> *tempArray = [NSMutableArray array];
+                for (NSDictionary *dict in categoriesArray) {
+                    Model *model = [self modelWithDict:dict];
+                    [tempArray addObject:model];
+                }
+                
+                if (finishedBlock) {
+                    finishedBlock(tempArray.copy);
+                }
             }
             
-            if (finishedBlock) {
-                finishedBlock(tempArray.copy);
-            }
-        }
-        
-    } failureHandle:^(NSURLSessionDataTask *task, NSError *error) {
-        
-    }];
+        } failureHandle:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+    });
+}
+
+
+#pragma mark -
+#pragma mark 懒加载
+
+- (NSMutableArray *)cacheArray {
+    if (!_cacheArray) {
+        _cacheArray = [NSMutableArray array];
+    }
+    return _cacheArray;
 }
 
 @end

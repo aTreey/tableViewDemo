@@ -42,7 +42,7 @@
     
     CGRect frame = CGRectMake(2, (44 - 10) * 0.5, 10, 10);
     UIView *identification = [[UIView alloc] initWithFrame:frame];
-    [self addSubview:identification];
+    [self.contentView addSubview:identification];
     self.identification = identification;
     [identification setBackgroundColor: [UIColor greenColor]];
     identification.layer.cornerRadius = 5;
@@ -64,7 +64,7 @@
 
 - (void)setLefModel:(Model *)lefModel {
     _lefModel = lefModel;
-    self.textLabel.text = [NSString stringWithFormat:@"%@(%ld)", lefModel.name, lefModel.size];
+    self.textLabel.text = [NSString stringWithFormat:@"%@", lefModel.name];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

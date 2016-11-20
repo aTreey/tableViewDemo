@@ -62,6 +62,7 @@ static NSString *const rightIdentifier = @"right_cell";
     [Model getApplyProcedureFinishedBlock:^(NSArray *array) {
         weakSelf.categories = array;
         [_leftTableView reloadData];
+        [self.leftTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
     }];
 }
 
@@ -75,6 +76,7 @@ static NSString *const rightIdentifier = @"right_cell";
         return self.categories.count;
     } else {
         return self.infoArray.count;
+//        return [self.categories[self.leftTableView.indexPathForSelectedRow.row] cacheArray].count;
     }
 }
 
@@ -86,32 +88,37 @@ static NSString *const rightIdentifier = @"right_cell";
         return cell;
     } else {
         RightCell *cell = [tableView dequeueReusableCellWithIdentifier:rightIdentifier];
-        Model1 *infoModel = self.infoArray[indexPath.row];
-        cell.infoModel = infoModel;
+        Model1 *model1 = _infoArray[indexPath.row];
+        cell.infoModel = model1;
+//        Model *model = self.categories[self.leftTableView.indexPathForSelectedRow.row];
+//        cell.infoModel = model.cacheArray[indexPath.row];
         return cell;
     }
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if (tableView == _leftTableView) {
         Model *category = _categories[indexPath.row];
         
-        [Model1 getApplyProcedureInfoWithCategoryName:category.name FinishedBlock:^(NSArray *array) {
-            if (!array.count) {
-                NSLog(@"网络错误");
-            }
-            self.infoArray = array;
-            NSLog(@"category = %@", _infoArray);
+        if (category.cacheArray.count) {
+            [_rightTableView reloadData];
             NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:0];
-            [_rightTableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
-        } failuerBlock:^(NSString *message) {
-            NSLog(@"message = %@", message);
-        }];
+            [_rightTableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationNone];
+        } else {
+            // 讲数组清空,解决点击cell时显示的还是上一个cell的数据
+            self.infoArray = nil;
+            [_rightTableView reloadData];
+            [Model1 getApplyProcedureInfoWithCategoryName:category.name FinishedBlock:^(NSArray *array) {
+                self.infoArray = array;
+                NSLog(@"category = %@", _infoArray);
+                NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:0];
+                [_rightTableView reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
+            } failuerBlock:^(NSString *message) {
+                NSLog(@"message = %@", message);
+            }];
+        }
     }
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
 }
 
 

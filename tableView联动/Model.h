@@ -15,6 +15,12 @@ typedef void (^finishedBlock)(NSArray *array);
 @property (copy,   nonatomic) NSString *name;
 @property (assign, nonatomic) NSInteger size;
 
+/*解决点击左边 tableView 右边重复请求数据问题*/
+// 1. 可用字典存储每个类别对应数据
+
+// 2. 用可变数组存储
+@property (strong, nonatomic) NSMutableArray *cacheArray;
+
 + (instancetype) modelWithDict:(NSDictionary *)dict;
 
 // 返回数据给控制器

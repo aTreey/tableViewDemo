@@ -21,6 +21,7 @@ typedef void(^failuerBlock)(NSString *message);
 @property (copy,   nonatomic) NSString *runStatus;
 @property (copy,   nonatomic) NSString *taskDef;
 
+
 + (instancetype)model1WithDict:(NSDictionary *)dict;
 
 + (void)getApplyProcedureInfoWithCategoryName:(NSString *)categoryName FinishedBlock:(finishedBlock)finishedBlock failuerBlock:(failuerBlock)failuerBlock;
