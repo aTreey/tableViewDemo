@@ -107,7 +107,7 @@ static NSString *const rightIdentifier = @"right_cell";
 - (void)checkFooterState {
     Model *category = self.categories[self.leftTableView.indexPathForSelectedRow.row];
     self.rightTableView.mj_footer.hidden = (self.infoArray.count == 0);
-    if (self.infoArray.count == category.size) {
+    if (self.infoArray.count >= category.size) {
         [self.rightTableView.mj_footer endRefreshingWithNoMoreData];
     } else {
         [self.rightTableView.mj_footer endRefreshing];
@@ -191,6 +191,12 @@ static NSString *const rightIdentifier = @"right_cell";
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // 结束上一次的刷新，防止奔溃
+    [self.rightTableView.mj_footer endRefreshing];
+    [self.rightTableView.mj_header endRefreshing];
+    
+    
     self.infoArray = nil;
     [self.rightTableView reloadData];
     if (tableView == _leftTableView) {
@@ -209,7 +215,8 @@ static NSString *const rightIdentifier = @"right_cell";
                     Model1 *model = [Model1 model1WithDict:dic];
                     [tempArray addObject:model];
                 }
-                self.infoArray = tempArray.copy;
+                [self.infoArray removeAllObjects];
+                [self.infoArray addObjectsFromArray:tempArray.copy];
                 
             }
             [self.rightTableView reloadData];
