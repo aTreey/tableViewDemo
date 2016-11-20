@@ -19,6 +19,7 @@
 		17D2FDA81DE03B6000DB9582 /* RightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D2FDA71DE03B6000DB9582 /* RightCell.m */; };
 		17D2FDAB1DE074F400DB9582 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 17D2FDAA1DE074F400DB9582 /* Model.m */; };
 		17F513C81DE16B58003F7A19 /* OneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F513C71DE16B58003F7A19 /* OneViewController.m */; };
+		17F513CB1DE1C681003F7A19 /* TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F513CA1DE1C681003F7A19 /* TwoViewController.m */; };
 		17F747081DE0972C0041A5B3 /* Model1.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F747071DE0972C0041A5B3 /* Model1.m */; };
 		17F7470B1DE09AB40041A5B3 /* NetWorkTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 17F7470A1DE09AB40041A5B3 /* NetWorkTools.m */; };
 		B38A2D76E40B85A136E11C77 /* libPods-tableView联动Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2929BAC1533A1D70801D2EF2 /* libPods-tableView联动Tests.a */; };
@@ -69,6 +70,8 @@
 		17D2FDAA1DE074F400DB9582 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		17F513C61DE16B58003F7A19 /* OneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneViewController.h; sourceTree = "<group>"; };
 		17F513C71DE16B58003F7A19 /* OneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneViewController.m; sourceTree = "<group>"; };
+		17F513C91DE1C681003F7A19 /* TwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoViewController.h; sourceTree = "<group>"; };
+		17F513CA1DE1C681003F7A19 /* TwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoViewController.m; sourceTree = "<group>"; };
 		17F747061DE0972C0041A5B3 /* Model1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model1.h; sourceTree = "<group>"; };
 		17F747071DE0972C0041A5B3 /* Model1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model1.m; sourceTree = "<group>"; };
 		17F747091DE09AB40041A5B3 /* NetWorkTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorkTools.h; sourceTree = "<group>"; };
@@ -152,6 +155,8 @@
 				17D2FD771DE023EE00DB9582 /* ViewController.m */,
 				17F513C61DE16B58003F7A19 /* OneViewController.h */,
 				17F513C71DE16B58003F7A19 /* OneViewController.m */,
+				17F513C91DE1C681003F7A19 /* TwoViewController.h */,
+				17F513CA1DE1C681003F7A19 /* TwoViewController.m */,
 				17D2FDA31DE03B4F00DB9582 /* LeftCell.h */,
 				17D2FDA41DE03B4F00DB9582 /* LeftCell.m */,
 				17D2FDA61DE03B6000DB9582 /* RightCell.h */,
@@ -496,6 +501,7 @@
 				17D2FDA51DE03B4F00DB9582 /* LeftCell.m in Sources */,
 				17D2FD781DE023EE00DB9582 /* ViewController.m in Sources */,
 				17D2FD751DE023EE00DB9582 /* AppDelegate.m in Sources */,
+				17F513CB1DE1C681003F7A19 /* TwoViewController.m in Sources */,
 				17F513C81DE16B58003F7A19 /* OneViewController.m in Sources */,
 				17D2FDAB1DE074F400DB9582 /* Model.m in Sources */,
 				17F7470B1DE09AB40041A5B3 /* NetWorkTools.m in Sources */,

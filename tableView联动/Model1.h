@@ -20,6 +20,11 @@ typedef void(^failuerBlock)(NSString *message);
 @property (copy,   nonatomic) NSString *name;
 @property (copy,   nonatomic) NSString *runStatus;
 @property (copy,   nonatomic) NSString *taskDef;
+@property (copy,   nonatomic) NSString *procInsId;
+//@property (copy,   nonatomic) NSString *runStatus;
+@property (copy,   nonatomic) NSString *formTableId;
+
+
 
 
 + (instancetype)model1WithDict:(NSDictionary *)dict;

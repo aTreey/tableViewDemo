@@ -9,6 +9,7 @@ target 'tableView联动' do
 
 pod ‘AFNetworking’
 pod 'MJExtension'
+pod 'MJRefresh'
 
   target 'tableView联动Tests' do
     inherit! :search_paths

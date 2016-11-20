@@ -19,4 +19,6 @@ typedef void(^failureHandle)(NSURLSessionDataTask *task, NSError *error);
 
 - (void)getWorkFlowApplyWithURL:(NSString *)URL Parameters:(NSDictionary *)parameters successHandle:(successHandle)successHandle failureHandle:(failureHandle)failureHandle;
 
+- (void)getAppliedWorkFlowWithParameters:(NSDictionary *)parameters successHandle:(successHandle)successHandle failureHandle:(failureHandle)failureHandle;
+
 @end

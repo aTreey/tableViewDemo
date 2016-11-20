@@ -37,7 +37,7 @@
 - (void)setInfoModel:(Model1 *)infoModel {
     _infoModel = infoModel;
     self.textLabel.font = [UIFont systemFontOfSize:13];
-    self.textLabel.text = [NSString stringWithFormat:@"%@:%ld:%ld", self.infoModel.name, self.infoModel.fversion, self.infoModel.formId];
+    self.textLabel.text = [NSString stringWithFormat:@"%@——>>>%@", self.infoModel.name, self.infoModel.runStatus];
     self.textLabel.textAlignment = NSTextAlignmentLeft;
     self.detailTextLabel.textColor = [UIColor blackColor];
 }

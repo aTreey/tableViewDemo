@@ -23,26 +23,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKU-YH-8Iz">
-                                <rect key="frame" x="16" y="64" width="343" height="603"/>
-                                <state key="normal" title="push"/>
+                                <rect key="frame" x="16" y="64" width="343" height="203"/>
+                                <color key="backgroundColor" red="0.34696500499999999" green="0.45175273500000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="push">
+                                    <color key="titleShadowColor" red="0.34696500499999999" green="0.45175273500000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="pushBtnDidClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KiZ-Ey-Vg9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAQ-Nf-6w9" userLabel="已申请">
+                                <rect key="frame" x="0.0" y="267" width="375" height="400"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="已申请">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="appliedFlowBtnDidClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Cf-md-5MD"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gAQ-Nf-6w9" secondAttribute="bottom" id="2fA-FI-Ege"/>
                             <constraint firstItem="CKU-YH-8Iz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="DKE-y2-IX0"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CKU-YH-8Iz" secondAttribute="bottom" id="V7h-gE-Sgc"/>
+                            <constraint firstAttribute="trailing" secondItem="gAQ-Nf-6w9" secondAttribute="trailing" id="McX-Zu-uKR"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="CKU-YH-8Iz" secondAttribute="bottom" constant="400" id="V7h-gE-Sgc"/>
+                            <constraint firstItem="gAQ-Nf-6w9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ciI-1g-gf9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CKU-YH-8Iz" secondAttribute="trailing" id="f6N-n3-2ze"/>
                             <constraint firstItem="CKU-YH-8Iz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kNp-RM-5pp"/>
+                            <constraint firstItem="gAQ-Nf-6w9" firstAttribute="top" secondItem="CKU-YH-8Iz" secondAttribute="bottom" id="nk6-Zk-7nK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="47h-fC-8t2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1234" y="125"/>
+            <point key="canvasLocation" x="1183" y="93"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ncz-2a-8EX">
